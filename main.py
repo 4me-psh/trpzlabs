@@ -1,16 +1,37 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from repository import Repository
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def main():
+    repository = Repository
+    repository.Repository.fetch(repository.Repository(), dbname='WebBrowser', user='postgres', password='1234',
+                                host='127.0.0.1', port='5432')
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+    # http_handler = HTTPRequestHandler
+    # response = http_handler.HTTPRequestHandler.send_get_request('')
+    # print(response)
+    #
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    # html_parser = HTMLParser
+    # parsed_data = html_parser.HTMLParser.parse(response)
+    # print(parsed_data)
+    #
+
+    # css_renderer = CSSRenderer
+    # css_content = "body { background-color: lightblue; }"
+    # css_renderer.CSSRenderer.render_css(css_content)
+    #
+
+    # js_interpreter = JSInterpreter
+    # js_code = "console.log('Hello, World!');"
+    # js_interpreter.JSInterpreter.execute_js(js_code)
+    #
+
+    # image_loader = ImageLoader
+    # image_url = 'http://example.com/image.jpg'
+    # image_loader.ImageLoader.load_image(image_url)
+
+
+if __name__ == "__main__":
+    main()
+
