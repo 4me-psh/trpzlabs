@@ -8,7 +8,7 @@ def main():
 
 
     # http_handler = HTTPRequestHandler
-    # response = http_handler.HTTPRequestHandler.send_get_request('')
+    # response = http_handler.HTTPRequestHandler.send_get_request('http://example.com')
     # print(response)
     #
 
@@ -34,3 +34,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
