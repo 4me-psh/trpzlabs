@@ -1,11 +1,12 @@
 from repository import Repository
-
+from view import MainWindow
 
 def main():
-    repository = Repository
-    repository.Repository.fetch(repository.Repository(), dbname='WebBrowser', user='postgres', password='1234',
-                                host='127.0.0.1', port='5432')
-
+    # repository = Repository
+    # repository.Repository.fetch(repository.Repository(), dbname='WebBrowser', user='postgres', password='1234',
+    #                             host='127.0.0.1', port='5432')
+    mainwindow = MainWindow
+    
 
     # http_handler = HTTPRequestHandler
     # response = http_handler.HTTPRequestHandler.send_get_request('http://example.com')
