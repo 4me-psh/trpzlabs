@@ -17,4 +17,8 @@ class History:
     def get_id_user(self):
         return self.id_user
 
-    #гетери та сетери, будуть дописані
+    def get_id_page(self):
+        return  self.id_page
+
+    def set_id_page(self, id_page):
+        self.id_page = id_page
