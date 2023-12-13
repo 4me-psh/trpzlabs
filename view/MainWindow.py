@@ -10,6 +10,7 @@ import sys
 from controller import HTTPResponseHandler
 from model import ErrorsProxy
 from repository import Repository
+import model
 
 
 # клас для виводу головного вікна
@@ -25,6 +26,7 @@ class MainWindow(QMainWindow):
 
         http_handler = HTTPResponseHandler
         response = http_handler.HTTPResponseHandler.send_get_response('http://example.com')
+
 
         # html_parser = HTMLParser
         # parsed_data = html_parser.HTMLParser.parse(response)
@@ -82,3 +84,19 @@ class MainWindow(QMainWindow):
                                                  'pages.id')
 
     # Метод для перевірки, чи юзер - адміністратор
+
+    def is_user_registered(self, user):
+        repository = Repository
+        for names in Repository.Repository.exec(repository.Repository(), dbname='WebBrowser', user='postgres',
+                                                password='1234',
+                                                host='127.0.0.1', port='5432', query='SELECT name from users'):
+            if user.User.name == names:
+                registered_user = model.Factory_Recommendations.Factory_Recommendations.create_recommendation(
+                    "registered")
+                return registered_user.Recommendations_Registered.recommend()
+            else:
+                not_registered_user = model.Factory_Recommendations.Factory_Recommendations.create_recommendation(
+                    "not_registered")
+
+                return not_registered_user.Recommendations_Not_Registered.recommend()
+    # Метод для перевірки, чи користувач зареєстрований та повертає рекомендації в залежності від перевірки
