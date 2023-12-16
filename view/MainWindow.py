@@ -11,7 +11,7 @@ from controller import HTTPResponseHandler
 from model import ErrorsProxy
 from repository import Repository
 import model
-
+from model import CSSRenderer, HTMLParser, ImageLoader, JSInterpreter
 
 # клас для виводу головного вікна
 class MainWindow(QMainWindow):
@@ -100,3 +100,14 @@ class MainWindow(QMainWindow):
 
                 return not_registered_user.Recommendations_Not_Registered.recommend()
     # Метод для перевірки, чи користувач зареєстрований та повертає рекомендації в залежності від перевірки
+
+    def css_content(self, content):
+        return CSSRenderer.CSSRenderer.content_compile(content)
+    def html_content(self, content):
+        return HTMLParser.HTMLParser.content_compile(content)
+    def image_content(self, content):
+        return ImageLoader.ImageLoader.content_compile(content)
+    def js_content(self, content):
+        return JSInterpreter.JSInterpreter.content_compile(content)
+
+    #приклад методів для обробки відповідного контенту та його повернення
