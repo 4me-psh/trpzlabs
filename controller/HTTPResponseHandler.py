@@ -1,6 +1,6 @@
 import urllib.request
 import urllib.error
-import HTTPRequestHandler
+import controller.HTTPRequestHandler
 import model.ErrorsProxy as erpr
 
 
@@ -11,7 +11,7 @@ class HTTPResponseHandler:
     def send_get_response(self, url):
 
         try:
-            HTTPRequestHandler.HTTPRequestHandler.send_get_request(url)
+            controller.HTTPRequestHandler.HTTPRequestHandler.send_get_request(url)
         except urllib.error.HTTPError as err:
             if err.code == 404:
                 erpr.ErrorsProxy.error_404()

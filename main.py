@@ -8,7 +8,5 @@ class Main:
         mainwindow.MainWindow.mainWindow()
 
 
-
-
-    if __name__ == "__main__":
-        main()
+if __name__ == "__main__":
+    Main.main()

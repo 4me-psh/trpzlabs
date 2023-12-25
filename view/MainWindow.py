@@ -8,7 +8,7 @@ import os
 import sys
 
 from controller import HTTPResponseHandler
-from model import ErrorsProxy
+from model import ErrorsProxy, HTMLVisitor
 from repository import Repository
 import model
 from model import CSSRenderer, HTMLParser, ImageLoader, JSInterpreter
@@ -111,3 +111,12 @@ class MainWindow(QMainWindow):
         return JSInterpreter.JSInterpreter.content_compile(content)
 
     #приклад методів для обробки відповідного контенту та його повернення
+
+    def visit_html(self, html_content):
+        search_tag = self.html_content(html_content)
+        search_image = self.image_content(html_content)
+        search_script = self.js_content(html_content)
+
+        HTMLVisitor.HTMLVisitor.visit_tag(search_tag)
+        HTMLVisitor.HTMLVisitor.visit_image(search_image)
+        HTMLVisitor.HTMLVisitor.visit_script(search_script)
