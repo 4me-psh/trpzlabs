@@ -6,12 +6,13 @@ from PyQt5.QtGui import *
 from PyQt5.QtPrintSupport import *
 import os
 import sys
-
 from controller import HTTPResponseHandler
 from model import ErrorsProxy, HTMLVisitor
+from model.P2PNode import P2PNode
 from repository import Repository
 import model
 from model import CSSRenderer, HTMLParser, ImageLoader, JSInterpreter
+
 
 # клас для виводу головного вікна
 class MainWindow(QMainWindow):
@@ -27,6 +28,15 @@ class MainWindow(QMainWindow):
         http_handler = HTTPResponseHandler
         response = http_handler.HTTPResponseHandler.send_get_response('http://example.com')
 
+        # Створення вузлів P2P та обмін ресурсами
+        node1 = P2PNode("Node1")
+        node2 = P2PNode("Node2")
+
+        # Node1 додає ресурс
+        node1.share_resource("resource123", "Data for resource123")
+
+        # Node2 запитує ресурс від Node1
+        requested_resource = node2.request_resource("resource123", node1)
 
         # html_parser = HTMLParser
         # parsed_data = html_parser.HTMLParser.parse(response)
@@ -99,18 +109,22 @@ class MainWindow(QMainWindow):
                     "not_registered")
 
                 return not_registered_user.Recommendations_Not_Registered.recommend()
+
     # Метод для перевірки, чи користувач зареєстрований та повертає рекомендації в залежності від перевірки
 
     def css_content(self, content):
         return CSSRenderer.CSSRenderer.content_compile(content)
+
     def html_content(self, content):
         return HTMLParser.HTMLParser.content_compile(content)
+
     def image_content(self, content):
         return ImageLoader.ImageLoader.content_compile(content)
+
     def js_content(self, content):
         return JSInterpreter.JSInterpreter.content_compile(content)
 
-    #приклад методів для обробки відповідного контенту та його повернення
+    # приклад методів для обробки відповідного контенту та його повернення
 
     def visit_html(self, html_content):
         search_tag = self.html_content(html_content)
